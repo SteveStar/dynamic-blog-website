@@ -10,12 +10,21 @@
   <div id="post-details">
     <h1 id="post-title"></h1>
     <p id="post-date"></p>
+
     <img id="post-image" style="display:none;" alt="Post Image" />
+
     <div id="post-content"></div>
 
     <!-- buttons for editing and deletion -->
     <button id="edit-btn" style="display:none;">Edit Post</button>
     <button id="delete-btn" style="display:none;">Delete Post</button>
+
+      <!-- images upload sec (for when everythings done) -->
+      <div id="edit-image-section" style="display:none;"> 
+        <label for="image-upload">Upload Image:</label> 
+        <input type="file" id="image-upload" accept="image/*"> 
+        <img id="image-preview" style="display:none; max-width: 200px; margin-top: 10px;" />
+      </div>
   </div>
 
   <!-- for better when in terms of the DOM-->

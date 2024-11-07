@@ -19,11 +19,9 @@ document.addEventListener('DOMContentLoaded', function () {
       
       // Show the post image if provided
       const postImageElement = document.getElementById('post-image');
-      if (post.image) {
+      if (post.image) {  //// New image handling logic
         postImageElement.style.display = 'block';
-        postImageElement.src = post.image;
-      } else {
-        postImageElement.style.display = 'none'; // Hide image if not provided
+        postImageElement.src = post.image;  //// Set the image source to the saved URL
       }
 
       // Populate the content
@@ -33,15 +31,44 @@ document.addEventListener('DOMContentLoaded', function () {
       const editBtn = document.getElementById('edit-btn');
       editBtn.style.display = 'inline-block'; // Show the edit button
 
+      // Show the delete button
+      const deleteBtn = document.getElementById('delete-btn');
+      deleteBtn.style.display = 'inline-block'; // Show the delete button
+
+      // Handle Edit button click
       editBtn.addEventListener('click', function () {
         // Prompt user to edit the title and content
         const newTitle = prompt('Edit the title:', post.title);
         const newContent = prompt('Edit the content:', post.content);
 
+        // Show the image upload section
+        const imageSection = document.getElementById('edit-image-section');
+        imageSection.style.display = 'block'; // Show the image upload section
+
+        // Preview the uploaded image before saving
+        const imageUpload = document.getElementById('image-upload');  //// New image upload handling
+        const imagePreview = document.getElementById('image-preview');
+        imageUpload.addEventListener('change', function (event) {
+          const file = event.target.files[0];
+          if (file) {
+            const reader = new FileReader();
+            reader.onload = function (e) {
+              imagePreview.src = e.target.result;  //// Preview the image
+              imagePreview.style.display = 'block';
+            };
+            reader.readAsDataURL(file);
+          }
+        });
+
+        // Handle the form submission to save the edited post
         if (newTitle && newContent) {
           // Update the post object with the new data
           post.title = newTitle;
           post.content = newContent;
+
+          // If there's an image, save the image URL
+          const imageUrl = imagePreview.src || post.image;
+          post.image = imageUrl;  //// Save image URL (either uploaded or existing)
 
           // Update the date to reflect the change time
           post.date = new Date().toLocaleString();
@@ -55,21 +82,18 @@ document.addEventListener('DOMContentLoaded', function () {
         }
       });
 
-      // Enable the delete button
-      const deleteBtn = document.getElementById('delete-btn');
-      deleteBtn.style.display = 'inline-block'; // Show the delete button
-
+      // Handle Delete button click
       deleteBtn.addEventListener('click', function () {
         const confirmation = confirm('Are you sure you want to delete this post?');
         if (confirmation) {
-          // Remove the post from the posts array
+          // Remove the post from the array
           posts = posts.filter(p => p.id !== postId);
 
-          // Save the updated posts back to local storage
+          // Update local storage
           localStorage.setItem('blogPosts', JSON.stringify(posts));
 
-          // Redirect to the home page or post listing after deletion
-          window.location.href = 'index.html';
+          // Redirect to the home page or another page after deletion
+          window.location.href = 'index.html'; // Assuming you're going to index.html
         }
       });
 
