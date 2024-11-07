@@ -1,5 +1,9 @@
 document.addEventListener('DOMContentLoaded', function () {
-  const form = document.querySelector('form');
+  const form = document.getElementById('post-form');
+  const titleInput = document.getElementById('title');
+  const contentInput = document.getElementById('content');
+  const imageUpload = document.getElementById('image-upload');
+  const imagePreview = document.getElementById('image-preview');
 
   form.addEventListener('submit', function (e) {
     e.preventDefault(); // Prevent the default form submission
@@ -35,5 +39,16 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // back to homepage
     window.location.href = 'index.html';
+  });
+  imageUpload.addEventListener('change', function (event) {
+    const file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = function (e) {
+        imagePreview.src = e.target.result;
+        imagePreview.style.display = 'block';
+      };
+      reader.readAsDataURL(file);
+    }
   });
 });
