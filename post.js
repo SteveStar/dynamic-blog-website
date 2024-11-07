@@ -1,50 +1,35 @@
 document.addEventListener('DOMContentLoaded', function () {
-  // extract the post ID from the URL query string
   const urlParams = new URLSearchParams(window.location.search);
   const postId = urlParams.get('id');
 
-  console.log('Post ID:', postId);  // Debugging line
-
-  // check if the post ID exists
   if (postId) {
-    // get existing posts from local storage
     let posts = JSON.parse(localStorage.getItem('blogPosts')) || [];
-    console.log('Posts from localStorage:', posts);  // Debugging line
-
-    // find the post with the matching ID
     const post = posts.find(p => p.id === postId);
-    console.log('Found post:', post);  // Debugging line
 
-    // check if the post exists
     if (post) {
       document.getElementById('post-title').textContent = post.title;
       document.getElementById('post-date').textContent = `Posted on: ${post.date}`;
       
-      // show the post image if provided
       const postImageElement = document.getElementById('post-image');
       if (post.image) {
         postImageElement.style.display = 'block';
-        postImageElement.src = post.image;  // Set the image source to the saved URL
+        postImageElement.src = post.image;
       }
 
-      // populate the content
       document.getElementById('post-content').textContent = post.content;
 
-      // enable the edit button
       const editBtn = document.getElementById('edit-btn');
-      editBtn.style.display = 'inline-block'; // Show the edit button
+      editBtn.style.display = 'inline-block';
 
-      // show the del button
       const deleteBtn = document.getElementById('delete-btn');
-      deleteBtn.style.display = 'inline-block'; // Show the delete button
+      deleteBtn.style.display = 'inline-block';
 
-      // handle Edit button click
       editBtn.addEventListener('click', function () {
         const newTitle = prompt('Edit the title:', post.title);
         const newContent = prompt('Edit the content:', post.content);
 
         const imageSection = document.getElementById('edit-image-section');
-        imageSection.style.display = 'block'; // Show the image upload section
+        imageSection.style.display = 'block';
 
         const imageUpload = document.getElementById('image-upload');  
         const imagePreview = document.getElementById('image-preview');
@@ -76,7 +61,6 @@ document.addEventListener('DOMContentLoaded', function () {
         }
       });
 
-      // handle Delete button
       deleteBtn.addEventListener('click', function () {
         const confirmation = confirm('Are you sure you want to delete this post?');
         if (confirmation) {
