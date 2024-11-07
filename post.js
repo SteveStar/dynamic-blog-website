@@ -22,6 +22,8 @@ document.addEventListener('DOMContentLoaded', function () {
       if (post.image) {
         postImageElement.style.display = 'block';
         postImageElement.src = post.image;
+      } else {
+        postImageElement.style.display = 'none'; // Hide image if not provided
       }
 
       // Populate the content
@@ -50,6 +52,24 @@ document.addEventListener('DOMContentLoaded', function () {
 
           // Reload the page to show updated content
           window.location.reload();
+        }
+      });
+
+      // Enable the delete button
+      const deleteBtn = document.getElementById('delete-btn');
+      deleteBtn.style.display = 'inline-block'; // Show the delete button
+
+      deleteBtn.addEventListener('click', function () {
+        const confirmation = confirm('Are you sure you want to delete this post?');
+        if (confirmation) {
+          // Remove the post from the posts array
+          posts = posts.filter(p => p.id !== postId);
+
+          // Save the updated posts back to local storage
+          localStorage.setItem('blogPosts', JSON.stringify(posts));
+
+          // Redirect to the home page or post listing after deletion
+          window.location.href = 'index.html';
         }
       });
 
