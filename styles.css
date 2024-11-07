@@ -1,58 +1,57 @@
-/* Add general styles first */
+/* add general styles first */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-  }
-  
-  .container {
-    width: 90%;
+}
+
+.container {
+    width: 60%;
     margin: auto;
-  }
-  
-  header {
+}
+
+header {
     background-color: #333;
     color: white;
     padding: 1rem;
-  }
-  
-  main {
+}
+
+main {
     padding: 2rem;
-  }
-  
-  /* Post Details Layout */
-  #post-details {
+}
+
+#post-details {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 20px;
+    padding: 30px; 
     max-width: 800px;
     margin: auto;
-  }
-  
-  #post-title-container,
-  #post-content-container,
-  #post-buttons-container {
+}
+
+#post-title-container,
+#post-content-container,
+#post-buttons-container {
     margin-bottom: 20px;
-  }
-  
-  #edit-image-section {
+}
+
+#edit-image-section {
     margin-top: 20px;
-  }
-  
-  #post-title {
-    font-size: 2em;
+}
+
+#post-title {
+    font-size: 2.5em; /* larger font size for desktop */
     margin-bottom: 10px;
-  }
-  
-  #post-content {
-    font-size: 1.2em;
+}
+
+#post-content {
+    font-size: 1.4em; /* larger font size for desktop */
     line-height: 1.5;
     text-align: justify;
-  }
-  
-  /* Buttons styling */
-  button {
+}
+
+/* buttons styling */
+button {
     padding: 10px 20px;
     margin: 10px;
     background-color: #4CAF50;
@@ -60,93 +59,62 @@ body {
     border: none;
     border-radius: 5px;
     cursor: pointer;
-  }
-  
-  button:hover {
+}
+
+button:hover {
     background-color: #45a049;
-  }
-  
-  /* Image upload styling */
-  #edit-image-section {
+}
+
+/* image upload styling */
+#edit-image-section {
     text-align: center;
-  }
-  
-  #image-preview {
+}
+
+#image-preview {
     max-width: 200px;
     margin-top: 10px;
-  }
-  
-  /* mobile testing*/
-  @media (max-width: 600px) {
+}
+
+/* desktop forced styling */
+@media (min-width: 1025px) {
     header {
-      font-size: 14px;
+        font-size: 22px;
     }
-  
+
     .container {
-      width: 100%;
+        width: 60%;
     }
-  
-    main {
-      padding: 1rem;
-    }
-  
+
+    /* post details desktop adjustments */
     #post-details {
-      padding: 15px;
+        padding: 30px;
     }
-  
+
     #post-title {
-      font-size: 1.8em;
+        font-size: 2.5em;
     }
-  
+
     #post-content {
-      font-size: 1.1em;
+        font-size: 1.4em;
     }
-  }
-  
-  
-  @media (min-width: 601px) and (max-width: 1024px) {
-    header {
-      font-size: 18px;
+
+    /* title alignment */
+    #post-title-container {
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        margin-bottom: 30px;
     }
-  
-    .container {
-      width: 80%;
+
+    /* post content container */
+    #post-content-container {
+        width: 100%;
+        text-align: justify;
     }
-  
-    /* mobile for extra points*/
-    #post-details {
-      padding: 25px;
+
+    /* buttons for desktop */
+    #post-buttons-container {
+        display: flex;
+        justify-content: center;
     }
-  
-    #post-title {
-      font-size: 2em;
-    }
-  
-    #post-content {
-      font-size: 1.3em;
-    }
-  }
-  
-  /* comp styles HOPEFULLY IT WORKS */
-  @media (min-width: 1025px) {
-    header {
-      font-size: 22px;
-    }
-  
-    .container {
-      width: 60%;
-    }
-  
-    /* Post Details Desktop Adjustments */
-    #post-details {
-      padding: 30px;
-    }
-  
-    #post-title {
-      font-size: 2.5em;
-    }
-  
-    #post-content {
-      font-size: 1.4em;
-    }
-  }
+}
