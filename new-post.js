@@ -2,16 +2,15 @@ document.addEventListener('DOMContentLoaded', function () {
   const form = document.getElementById('post-form');
   const titleInput = document.getElementById('title');
   const contentInput = document.getElementById('content');
-  const imageUpload = document.getElementById('image-upload');
   const imagePreview = document.getElementById('image-preview');
 
   form.addEventListener('submit', function (e) {
     e.preventDefault(); // Prevent the default form submission
 
     // get the form data
-    const title = document.getElementById('title').value;
-    const content = document.getElementById('content').value;
-    const image = document.getElementById('image').value;
+    const title = titleInput.value;
+    const content = contentInput.value;
+    const image = imagePreview.src || null;
 
     // validation to check if empty
     if (!title || !content) {
@@ -40,6 +39,8 @@ document.addEventListener('DOMContentLoaded', function () {
     // back to homepage
     window.location.href = 'index.html';
   });
+  const imageUpload = document.getElementById('image-upload');
+
   imageUpload.addEventListener('change', function (event) {
     const file = event.target.files[0];
     if (file) {
