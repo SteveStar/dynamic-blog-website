@@ -5,19 +5,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Post</title>
   <link rel="stylesheet" href="styles.css">
+  <script src="post.js"></script>
 </head>
 <body>
   <div id="post-details">
     <h1 id="post-title"></h1>
     <p id="post-date"></p>
+    
+      <div id="post-image-container">
+        <img id="post-image" style="display:none;" alt="Post Image" />
+      </div>
 
-    <img id="post-image" style="display:none;" alt="Post Image" />
+       <div id="post-content-container">
+        <div id="post-content"></div>
+      </div>
 
-    <div id="post-content"></div>
-
-    <!-- buttons for editing and deletion -->
-    <button id="edit-btn" style="display:none;">Edit Post</button>
-    <button id="delete-btn" style="display:none;">Delete Post</button>
+      <div id="post-buttons-container">
+        <button id="edit-btn" style="display:none;">Edit Post</button>
+        <button id="delete-btn" style="display:none;">Delete Post</button>
+      </div>
 
       <!-- images upload sec (for when everythings done) -->
       <div id="edit-image-section" style="display:none;"> 
@@ -25,9 +31,6 @@
         <input type="file" id="image-upload" accept="image/*"> 
         <img id="image-preview" style="display:none; max-width: 200px; margin-top: 10px;" />
       </div>
-  </div>
 
-  <!-- for better when in terms of the DOM-->
-  <script src="post.js"></script>
 </body>
 </html>

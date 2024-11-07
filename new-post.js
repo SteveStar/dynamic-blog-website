@@ -4,36 +4,36 @@ document.addEventListener('DOMContentLoaded', function () {
     form.addEventListener('submit', function (e) {
       e.preventDefault(); // Prevent the default form submission
   
-      // Get form data
+      // get the form data
       const title = document.getElementById('title').value;
       const content = document.getElementById('content').value;
       const image = document.getElementById('image').value;
   
-      // Validation: Check if title and content are not empty
+      // validation to check if empty
       if (!title || !content) {
         alert("Title and content cannot be empty!");
         return; // Stop further execution if validation fails
       }
   
-      // Create a new post object with a unique ID (using Date.now() to generate a unique ID)
+      // create a new post object with a unique ID to get a unique id (i thought date would work well)
       const newPost = {
-        id: Date.now().toString(),  // Generate a unique ID based on the timestamp
+        id: Date.now().toString(),  // get a unique id based on time stamp
         title,
         content,
-        image: image || null,  // If no image is provided, set it as null
-        date: new Date().toLocaleString()  // Adding a date for when the post is created
+        image: image || null,  // if no image is provided, set it as null
+        date: new Date().toLocaleString()  // drop in a date when the post is made
       };
   
-      // Get existing posts from local storage or initialize an empty array
+      // get existing posts from the local storage OR make a new array
       let posts = JSON.parse(localStorage.getItem('blogPosts')) || [];
   
-      // Add the new post to the posts array
+      // add the new post to posts array
       posts.push(newPost);
   
-      // Save the updated posts array back to local storage
+      // save the updated array to posts array
       localStorage.setItem('blogPosts', JSON.stringify(posts));
   
-      // Redirect to homepage after saving the post
+      // back to homepage
       window.location.href = 'index.html';
     });
   });

@@ -20,7 +20,63 @@ body {
     padding: 2rem;
   }
   
-  /* Mobile-first styles */
+  /* Post Details Layout */
+  #post-details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    max-width: 800px;
+    margin: auto;
+  }
+  
+  #post-title-container,
+  #post-content-container,
+  #post-buttons-container {
+    margin-bottom: 20px;
+  }
+  
+  #edit-image-section {
+    margin-top: 20px;
+  }
+  
+  #post-title {
+    font-size: 2em;
+    margin-bottom: 10px;
+  }
+  
+  #post-content {
+    font-size: 1.2em;
+    line-height: 1.5;
+    text-align: justify;
+  }
+  
+  /* Buttons styling */
+  button {
+    padding: 10px 20px;
+    margin: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #45a049;
+  }
+  
+  /* Image upload styling */
+  #edit-image-section {
+    text-align: center;
+  }
+  
+  #image-preview {
+    max-width: 200px;
+    margin-top: 10px;
+  }
+  
+  /* mobile testing*/
   @media (max-width: 600px) {
     header {
       font-size: 14px;
@@ -33,9 +89,21 @@ body {
     main {
       padding: 1rem;
     }
+  
+    #post-details {
+      padding: 15px;
+    }
+  
+    #post-title {
+      font-size: 1.8em;
+    }
+  
+    #post-content {
+      font-size: 1.1em;
+    }
   }
   
-  /* Tablet styles */
+  
   @media (min-width: 601px) and (max-width: 1024px) {
     header {
       font-size: 18px;
@@ -44,9 +112,22 @@ body {
     .container {
       width: 80%;
     }
+  
+    /* mobile for extra points*/
+    #post-details {
+      padding: 25px;
+    }
+  
+    #post-title {
+      font-size: 2em;
+    }
+  
+    #post-content {
+      font-size: 1.3em;
+    }
   }
   
-  /* Desktop styles */
+  /* comp styles HOPEFULLY IT WORKS */
   @media (min-width: 1025px) {
     header {
       font-size: 22px;
@@ -55,5 +136,17 @@ body {
     .container {
       width: 60%;
     }
-  }
   
+    /* Post Details Desktop Adjustments */
+    #post-details {
+      padding: 30px;
+    }
+  
+    #post-title {
+      font-size: 2.5em;
+    }
+  
+    #post-content {
+      font-size: 1.4em;
+    }
+  }
