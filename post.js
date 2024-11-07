@@ -2,34 +2,44 @@ document.addEventListener('DOMContentLoaded', function () {
   const urlParams = new URLSearchParams(window.location.search);
   const postId = urlParams.get('id');
 
-  if (postId) {
-    let posts = JSON.parse(localStorage.getItem('blogPosts')) || [];
-    const post = posts.find(p => p.id === postId);
+  console.log('Post ID:', postId); // debugging
 
+  // check if the post ID exists
+  if (postId) {
+    // get posts from localStorage
+    let posts = JSON.parse(localStorage.getItem('blogPosts')) || [];
+    console.log('Posts from localStorage:', posts); // debugging
+
+    // find the post with the matching ID
+    const post = posts.find(p => p.id === postId);
+    console.log('Found post:', post); // debugging
+
+    // sisplay the post details if found
     if (post) {
       document.getElementById('post-title').textContent = post.title;
       document.getElementById('post-date').textContent = `Posted on: ${post.date}`;
-      
+
       const postImageElement = document.getElementById('post-image');
       if (post.image) {
         postImageElement.style.display = 'block';
-        postImageElement.src = post.image;
+        postImageElement.src = post.image;  // Set the image source
       }
 
       document.getElementById('post-content').textContent = post.content;
 
+      // show edit and delete buttons
       const editBtn = document.getElementById('edit-btn');
-      editBtn.style.display = 'inline-block';
-
       const deleteBtn = document.getElementById('delete-btn');
+      editBtn.style.display = 'inline-block';
       deleteBtn.style.display = 'inline-block';
 
+      // edit button functionality
       editBtn.addEventListener('click', function () {
         const newTitle = prompt('Edit the title:', post.title);
         const newContent = prompt('Edit the content:', post.content);
 
         const imageSection = document.getElementById('edit-image-section');
-        imageSection.style.display = 'block';
+        imageSection.style.display = 'block'; // show image upload section
 
         const imageUpload = document.getElementById('image-upload');  
         const imagePreview = document.getElementById('image-preview');
@@ -57,19 +67,19 @@ document.addEventListener('DOMContentLoaded', function () {
           posts = posts.map(p => p.id === postId ? post : p);
           localStorage.setItem('blogPosts', JSON.stringify(posts));
 
-          window.location.reload();
+          window.location.reload(); // reload the page to reflect changes
         }
       });
 
+      // Delete button functionality
       deleteBtn.addEventListener('click', function () {
         const confirmation = confirm('Are you sure you want to delete this post?');
         if (confirmation) {
           posts = posts.filter(p => p.id !== postId);
           localStorage.setItem('blogPosts', JSON.stringify(posts));
-          window.location.href = 'index.html';
+          window.location.href = 'index.html'; // redirect to the homepage
         }
       });
-
     } else {
       document.getElementById('post-details').innerHTML = '<p>Post not found!</p>';
     }
