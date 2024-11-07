@@ -3,23 +3,22 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>View Blog Post</title>
+  <title>Post</title>
   <link rel="stylesheet" href="styles.css">
   <script src="post.js"></script>
 </head>
 <body>
-
-  <header>
-    <h1>Blog Post</h1>
-    <a href="index.html">Back to Homepage</a>
-  </header>
-
-  <main id="post-details">
-    <h2 id="post-title"></h2>
+  <div id="post-details">
+    <h1 id="post-title"></h1>
     <p id="post-date"></p>
-    <img id="post-image" src="" alt="Post Image" style="display:none;">
-    <p id="post-content"></p>
-  </main>
+    <img id="post-image" style="display:none;" alt="Post Image" />
+    <div id="post-content"></div>
 
+    <button id="edit-btn" style="display:none;">Edit Post</button>
+
+    <button id="delete-btn" style="display:none;">Delete Post</button>
+  </div>
+
+ 
 </body>
 </html>
