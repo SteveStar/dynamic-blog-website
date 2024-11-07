@@ -11,9 +11,8 @@ document.addEventListener('DOMContentLoaded', function () {
     // find the post with the matching ID
     const post = posts.find(p => p.id === postId);
 
-    // Check if the post exists
+    // check if the post exists
     if (post) {
-      // Populate the post details on the page
       document.getElementById('post-title').textContent = post.title;
       document.getElementById('post-date').textContent = `Posted on: ${post.date}`;
       
